@@ -14,7 +14,7 @@ const { createAccountAddress } = require("./AADeploy");
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/createAccountAddress", async (req, res) => {
+app.get("/generate_wallet", async (req, res) => {
   try {
     const signer = await createSigner();
     const counterfactualAddress = await signer.account.getAddress();
@@ -31,7 +31,7 @@ app.get("/createAccountAddress", async (req, res) => {
   }
 });
 
-app.get("/sendTransaction", async (req, res) => {
+app.get("/exec_trx", async (req, res) => {
   try {
     const PRIV_KEY = process.env.PRIV_KEY;
     const ALCHEMY_API_URL = process.env.ALCHEMY_API_URL;
